@@ -1,0 +1,31 @@
+server:
+  port: 8600
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vue
+    username: root
+    password: wu15072668662.
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.wu.xxljobdemo.entity
+
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:9000/xxl-job-admin
+    executor:
+      appname: xxl-job-redisdemo
+      logpath: /Users/wuzhengzhuo/Downloads/myjavatest/new-crown-outbreak/src/main/resources/log
+
+
+
+

@@ -1,0 +1,19 @@
+2021-06-29 14:27:26 [com.xxl.job.core.thread.JobThread#run]-[130]-[Thread-64] <br>----------- xxl-job job execute start -----------<br>----------- Param:
+2021-06-29 14:27:26 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[40]-[Thread-64] XXL-JOB, Hello World.
+2021-06-29 14:27:26 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[45]-[Thread-64] beat at:0
+2021-06-29 14:27:28 [com.xxl.job.executor.service.jobhandler.SampleXxlJob#demoJobHandler]-[45]-[Thread-64] beat at:1
+2021-06-29 14:27:29 [com.xxl.job.core.thread.JobThread#run]-[191]-[Thread-64] <br>----------- JobThread toStop, stopReason:web container destroy and kill the job.
+2021-06-29 14:27:29 [com.xxl.job.core.thread.JobThread#run]-[201]-[Thread-64] <br>----------- JobThread Exception:java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor37.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.xxl.job.core.handler.impl.MethodJobHandler.execute(MethodJobHandler.java:31)
+	at com.xxl.job.core.thread.JobThread.run(JobThread.java:163)
+Caused by: java.lang.InterruptedException: sleep interrupted
+	at java.lang.Thread.sleep(Native Method)
+	at java.lang.Thread.sleep(Thread.java:340)
+	at java.util.concurrent.TimeUnit.sleep(TimeUnit.java:386)
+	at com.xxl.job.executor.service.jobhandler.SampleXxlJob.demoJobHandler(SampleXxlJob.java:46)
+	... 5 more
+<br>----------- xxl-job job execute end(error) -----------
+2021-06-29 14:27:29 [com.xxl.job.core.thread.TriggerCallbackThread#callbackLog]-[197]-[xxl-job, executor TriggerCallbackThread] <br>----------- xxl-job job callback finish.

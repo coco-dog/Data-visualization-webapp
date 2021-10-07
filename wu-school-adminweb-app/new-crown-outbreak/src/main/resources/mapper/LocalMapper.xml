@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wu.xxljobdemo.mapper.LocalMapper">
+
+
+    <select id="findstatename" resultType="String">
+        select distinct state from counties
+    </select>
+    <select id="newdate" resultType="Local">
+        select sum(cases) as cases,sum(deaths) as deaths,sum(deaths)/sum(cases) as cfs from counties where state=#{state} and date=(select max(date) from counties)
+    </select>
+    <select id="geo" resultType="Local" parameterType="String">
+        select state,sum(cases) as cases,sum(deaths) as deaths from counties where state=#{state} and date=(select max(date) from counties)
+    </select>
+    <select id="excel" resultType="Local" parameterType="String">
+        select state,sum(cases) as cases,sum(deaths) as deaths,sum(deaths)/sum(cases) as cfs from counties where state=#{state} and date=(select max(date) from counties)
+    </select>
+    <select id="search" parameterType="String" resultType="Local">
+        select county,cases,deaths from counties where state=#{state} and date=(select max(date) from counties)
+    </select>
+    <select id="line" resultType="Local" parameterType="Date">
+        select date,sum(deaths)/sum(cases) as cfs from counties where date=#{date}
+    </select>
+    <select id="searchstateline" resultType="Local">
+        select date,sum(deaths)/sum(cases) as cfs from counties where date=#{date} and state=#{state}
+    </select>
+    <select id="maxdate" resultType="java.sql.Date">
+        select max(date) from counties limit 1
+    </select>
+    <select id="mindate" resultType="java.sql.Date">
+        select min(date) from counties limit 1
+    </select>
+    <select id="statemaxdate" resultType="java.sql.Date" parameterType="String">
+        select max(date) from counties where state=#{state}
+    </select>
+    <select id="statemindate" resultType="java.sql.Date" parameterType="String">
+        select min(date) from counties where state=#{state}
+    </select>
+    <select id="detaildata" parameterType="String" resultType="Local">
+        select county,sum(cases) as cases,sum(deaths) as deaths,sum(deaths)/sum(cases) as cfs from counties where state=#{state} and date=(select max(date) from counties) group by county;
+    </select>
+</mapper>
