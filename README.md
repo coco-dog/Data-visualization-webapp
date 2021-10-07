@@ -52,13 +52,13 @@
 
    ![截屏2021-10-06 下午6.42.28](https://github.com/coco-dog/Data-visualization-webapp/blob/master/images/%E6%88%AA%E5%B1%8F2021-10-06%20%E4%B8%8B%E5%8D%886.42.28.png)
 
-   在该地方执行器为xxl-job-redisdemo![截屏2021-10-06 下午6.44.18](/Users/wuzhengzhuo/Desktop/截屏2021-10-06 下午6.44.18.png)
+   在该地方执行器为xxl-job-redisdemo![截屏2021-10-06 下午6.44.18](https://github.com/coco-dog/Data-visualization-webapp/blob/master/images/%E6%88%AA%E5%B1%8F2021-10-06%20%E4%B8%8B%E5%8D%886.44.18.png)
 
    在执行器中启动所有的任务，数据将导入到redis中，程序中大多数数据都是通过redis存储，根据定时任务定时更新。
 
 3. 程序执行正常执行显示图如下
 
-   ![截屏2021-10-06 下午6.57.10](/Users/wuzhengzhuo/Desktop/截屏2021-10-06 下午6.57.10.png)
+   ![截屏2021-10-06 下午6.57.10](https://github.com/coco-dog/Data-visualization-webapp/blob/master/images/%E6%88%AA%E5%B1%8F2021-10-06%20%E4%B8%8B%E5%8D%886.57.10.png)
 
 ## 总结
 
