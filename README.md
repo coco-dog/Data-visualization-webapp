@@ -24,6 +24,8 @@
 
 在开始运行项目的过程前，请保证已经配置了一下几点
 
+-前端代码在epidemic_web,后段代码在wu-school-adminweb-app,images中为项目运行截图
+
 - 本项目使用redis作为缓存，需要用户在本机已经安装和已经启动了redis
 
 - Maven配置好，更改在自己本机的setting.xml和仓库的地址
