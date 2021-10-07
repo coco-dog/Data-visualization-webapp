@@ -50,7 +50,7 @@
 
 2. 前端调用后端接口，在service层中，会查询redis，此时redis中是没有数据的，只有启动的定时任务，让程序运行几分钟，键就会全部加载到redis中，这里没有采用显示和缓存同时进行，因为同时进行仍需要等待。所以先启动端口为9000的定时任务，打开界面账号为admin密码为123456
 
-   ![截屏2021-10-06 下午6.42.28](/Users/wuzhengzhuo/Desktop/截屏2021-10-06 下午6.42.28.png)
+   ![截屏2021-10-06 下午6.42.28](https://github.com/coco-dog/Data-visualization-webapp/blob/master/images/%E6%88%AA%E5%B1%8F2021-10-06%20%E4%B8%8B%E5%8D%886.42.28.png)
 
    在该地方执行器为xxl-job-redisdemo![截屏2021-10-06 下午6.44.18](/Users/wuzhengzhuo/Desktop/截屏2021-10-06 下午6.44.18.png)
 
