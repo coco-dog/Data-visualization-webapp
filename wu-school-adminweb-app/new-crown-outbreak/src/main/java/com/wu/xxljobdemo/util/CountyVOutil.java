@@ -6,7 +6,7 @@ import java.util.Map;
 public class CountyVOutil {
     public static Map<String,String> casegetcolor(Integer cases){
         String color=null;
-        if (cases<10){
+        if (cases<1){
              color="#000000";
         }else if (cases>=10&&cases<50){
              color="#111111";
