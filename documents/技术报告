@@ -1,0 +1,57 @@
+# 作品类别：算法
+
+## 设计方案：
+
+​			本项目使用前后端分离，使用vue作为前端框架，使用了element-ui,echarts等组件作为可视化和网站快速成型的工具，后端使用springboot+mybatis+redis+xxljob作为后端框架，本项目使用xxljob为单节点的定时任务搭配redis实现数据的快速展现
+
+## 特性：
+
+- 几乎所有需要展现的数据都存入到了redis中，并且定时更新
+- 前后端分离，后端对跨域提供支持
+- xxljob的定时可直接在界面中操作定时时间
+
+在开始运行项目的过程前，请保证已经配置了一下几点
+
+- 前端代码在epidemic_web,后段代码在wu-school-adminweb-app,images中为项目运行截图
+
+- 本项目使用redis作为缓存，需要用户在本机已经安装和已经启动了redis
+
+- Maven配置好，更改在自己本机的setting.xml和仓库的地址
+
+- 本项目中有两个启动项，一个为定时任务xxl-job,另一个为new-crown-outbreak
+
+- 首先来说第二个，该模块内为项目的数据展示的后端，在配置文件中更改mysql的密码和xxljob的日志路径
+
+- 再来说第一个，该模块为定时任务的模块，在子模块xxl-job-admin中也需要更改mysql的密码，其中mysql里面出现的一个新库为xxl_job该库为xxljob的多节点需要的库，本任务中不必管，可在xxl-job/doc/db中找到该.sql文件,回到xxl-job-admin中，配置文件下面有一个logback.xml其中有一个路径需要更改，而且该文件需要自己创建
+
+  `<property name="log.path" value="/Users/wuzhengzhuo/Downloads/xxl-job/log/xxl-job-admin.log"/>`
+
+- 最后项目就可以启动了，数据展示模块的启动项为XxljobSpringbooDemo,定时任务的启动项为XxlJobAdminApplication
+
+- 注意，程序的端口号分别为8600和9000，端口占用程序会启动失败
+
+- 数据库结构
+
+  | data | county | State | Cases    | Deaths   |
+  | ---- | ------ | ----- | -------- | -------- |
+  | 日期 | 区     | 州    | 感染人数 | 死亡人数 |
+
+## 新增
+
+- 为实现前后端对接的可视化文档，线已经添加knife4j组件，对前端使用者调用更加友好，使用该可视化界面只需启动XxljobSpringbooDemo访问[http://localhost:8600/doc.html](https://gitee.com/link?target=http%3A%2F%2Flocalhost%3A8600%2Fdoc.html) 即可对可视化接口进行测试和访问
+
+## 程序逻辑
+
+1. 前端为独立启动，启动后会自动调用后端接口，程序启动请先运行后端，否则前端无数据显示
+
+2. 前端调用后端接口，在service层中，会查询redis，此时redis中是没有数据的，只有启动的定时任务，让程序运行几分钟，键就会全部加载到redis中，这里没有采用显示和缓存同时进行，因为同时进行仍需要等待。所以先启动端口为9000的定时任务，打开界面账号为admin密码为123456
+
+   ![截屏2021-10-06 下午6.42.28](https://gitee.com/coco-dog/Data-visualization-webapp/raw/master/images/%E6%88%AA%E5%B1%8F2021-10-06%20%E4%B8%8B%E5%8D%886.42.28.png)
+
+   在该地方执行器为xxl-job-redisdemo![截屏2021-10-06 下午6.44.18](https://gitee.com/coco-dog/Data-visualization-webapp/raw/master/images/%E6%88%AA%E5%B1%8F2021-10-06%20%E4%B8%8B%E5%8D%886.44.18.png)
+
+   在执行器中启动所有的任务，数据将导入到redis中，程序中大多数数据都是通过redis存储，根据定时任务定时更新。
+
+3. 程序执行正常执行显示图如下
+
+   ![截屏2021-10-06 下午6.57.10](https://gitee.com/coco-dog/Data-visualization-webapp/raw/master/images/%E6%88%AA%E5%B1%8F2021-10-06%20%E4%B8%8B%E5%8D%886.57.10.png)
